@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICA_app</title>
+</head>
+
+<body>
+
+    <h2>Inico</h2>
+
+    <ul>
+        <li><a href="{% url 'home' %}">Inicio</a></li>
+        <li><a href="{% url 'products' %}">Productos</a></li>
+        {% if request.user.is_authenticated %}
+            <li><a href={% url "exit" %}><button>salir</button></a></li>
+        {% else %}
+            <li><a href={% url "login" %}><button>Ingresar</button></a></li>
+        {% endif %}
+    </ul>
+    
+    {% block content %} {% endblock %}
+
+</body>
+
+</html>
